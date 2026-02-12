@@ -1,0 +1,4 @@
+2026-02-12 00:13:00,551 - WARNING - rutas_validaciones.py:24 - n.pdf no existe o no es un PDF
+2026-02-12 00:13:00,551 - INFO - rutas_validaciones.py:29 - salida: [WindowsPath('s.pdf')]
+2026-02-12 00:13:00,552 - INFO - uniones_pdfs.py:23 - PDF agregado correctamente s.pdf
+2026-02-12 00:13:00,552 - INFO - uniones_pdfs.py:33 - PDF unidos correctmanete s.pdf

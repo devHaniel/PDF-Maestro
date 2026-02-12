@@ -1,9 +1,9 @@
 from pathlib import Path
-from logger_configuracion import setup_logger
+from util.logger_configuracion import setup_logger
 
 logger = setup_logger()
 
-def valdiad_Rutas(rutas, extension):
+def validar_rutas(rutas, extension):
 
     """
     Devuelve una lista de las rutas validas\n
@@ -30,4 +30,4 @@ def valdiad_Rutas(rutas, extension):
     return salida
 
 if __name__ == '__main__' : 
-    valdiad_Rutas(['hola.pdf','pruea.pdf'],'.pdf')
+    validar_rutas(['hola.pdf','pruea.pdf'],'.pdf')
