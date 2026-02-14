@@ -6227,3 +6227,5 @@
 2026-02-14 00:46:32,004 - INFO - uniones_pdfs.py:25 - PDF agregado correctamente D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\tarea 7\portadaa - copia.pdf
 2026-02-14 00:46:32,008 - INFO - uniones_pdfs.py:25 - PDF agregado correctamente D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\tarea 7\7_josephhernandez_32511492.pdf
 2026-02-14 00:46:32,099 - INFO - uniones_pdfs.py:36 - PDF unidos correctmanete D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\tarea 7\salida2.pdf
+2026-02-14 01:16:35,173 - INFO - rutas_validaciones.py:29 - salida: []
+2026-02-14 01:16:35,174 - ERROR - conversor.py:26 - No se encontraron archivos word
