@@ -37,4 +37,5 @@ def unir_pdfs(rutas_pdf, salida_pdf):
         objUnidor.close()
 
 if __name__ == '__main__':
-    unir_pdfs(['n.pdf','s.pdf'],'s.pdf')
+    # unir_pdfs(["D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\\tarea 6\portada.pdf","D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\\tarea 6\perfSONAR.pdf"],"D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\\tarea 6\prueba.pdf")
+    unir_pdfs(["D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\\tarea 7\portada.pdf", "D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\\tarea 7\\07_t.pdf"], "D:\CEUTEC\Trabajos Ceutec Periodo 5\Comercio Electronico\\tarea 7\\7_josephhernandez_32511492.pdf")
