@@ -29,5 +29,3 @@ def validar_rutas(rutas, extension):
     logger.info(f'salida: {salida}')
     return salida
 
-if __name__ == '__main__' : 
-    validar_rutas(['hola.pdf','pruea.pdf'],'.pdf')
