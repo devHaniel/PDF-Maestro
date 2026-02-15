@@ -1,59 +1,57 @@
 from PyPDF2 import PdfMerger
 from pathlib import Path
-
 from backend.utils.logger_configuracion import setup_logger
-from backend.utils import validar_rutas
+from backend.utils.rutas_validaciones import validar_rutas
 
-def unir_pdfs(rutas_pdf, salida_pdf):
-
+def unir_pdfs(rutas_pdf: list[str], salida_pdf: str) -> dict:
     """
+    Une varios archivos PDF en uno solo.
 
     Args:
         rutas_pdf: Lista de rutas de los archivos pdf.
-        salida_pdf: cadena de texto con la salida junto la extesion .pdf
+        salida_pdf: Ruta de salida con extensión .pdf
 
     Returns:
-        senal = boolean -> Operacion exitosa o no.\n
-        mensaje = indica que paso.
+        dict: {
+            'senal': bool -> Operación exitosa o no,
+            'mensaje': str -> Mensaje descriptivo
+        }
     """
 
+    log = setup_logger()
     senal = False
     mensaje = ""
-
-    # Validacion de las rutas
-    log = setup_logger()
     objUnidor = PdfMerger()
 
+    # Validar rutas
     validador = validar_rutas(rutas_pdf, '.pdf')
-
     if not validador:
-        log.warning('No se encontraorn pdfs')
-        mensaje = "No se encontraen pdfs"
+        mensaje = "No se encontraron PDFs válidos."
+        log.warning(mensaje)
         return {'senal': senal, 'mensaje': mensaje}
 
+    # Intentar agregar cada PDF
     for pdf in validador:
         try:
             objUnidor.append(pdf)
-            log.info(f'PDF agregado correctamente {pdf}')
+            log.info(f"PDF agregado correctamente: {pdf}")
         except Exception as e:
-            log.error(f'Error: {e}')
-
-            mensaje = f'Error: {e}'
+            mensaje = f"Error agregando {pdf}: {e}"
+            log.error(mensaje)
+            objUnidor.close()
             return {'senal': senal, 'mensaje': mensaje}
 
-    salida_pdf = Path(salida_pdf)
-
+    # Guardar PDF final
     try:
-        objUnidor.write(str(salida_pdf))
-        log.info(f'PDF unidos correctmanete {salida_pdf}')
+        salida_path = Path(salida_pdf)
+        objUnidor.write(str(salida_path))
         senal = True
-        mensaje = "PDF unido correctamente"
-        return {'senal': senal, 'mensaje': mensaje}
-
-
+        mensaje = f"PDF unido correctamente en {salida_path}"
+        log.info(mensaje)
     except Exception as e:
-        log.error(f'Error: {e}')
-        mensaje = f"Error: {e}"
-        return {'senal': senal, 'mensaje': mensaje}
+        mensaje = f"Error escribiendo PDF final: {e}"
+        log.error(mensaje)
     finally:
         objUnidor.close()
+
+    return {'senal': senal, 'mensaje': mensaje}

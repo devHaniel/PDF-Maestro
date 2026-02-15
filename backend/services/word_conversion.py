@@ -1,7 +1,7 @@
 from docx2pdf import convert
 
 from backend.utils.logger_configuracion import setup_logger
-from backend.utils import validar_rutas
+from backend.utils.rutas_validaciones import validar_rutas
 
 def convertir_word_pdf(*ruta_archivos_word):
 

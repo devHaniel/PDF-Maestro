@@ -1,31 +1,15 @@
 from pathlib import Path
-from backend.utils.logger_configuracion import setup_logger
+import logging
 
-logger = setup_logger()
-
-def validar_rutas(rutas, extension):
-
-    """
-    Devuelve una lista de las rutas validas\n
-    sino encuentra alguna, se devolvera una cadena vacia.
-    
-    Args:
-        rutas     : lista de rutas.
-        extension : extension que debe tener cada ruta. 
-    """
-
+def validar_rutas(lista_rutas, extension):
+    log = logging.getLogger("PDF-maestro")
     salida = []
 
-    for ruta in rutas:
-
-        ruta = Path(ruta)
-
-        if not ruta.exists() or ruta.suffix.lower() != extension:
-            logger.warning(f'{ruta} no existe o no es un PDF')
+    for ruta in lista_rutas:
+        p = Path(ruta).resolve()
+        if not p.exists() or not p.is_file() or p.suffix.lower() != extension:
+            log.warning(f"{p} no existe o no es un PDF")
             continue
+        salida.append(str(p))
 
-        salida.append(ruta)
-
-    logger.info(f'salida: {salida}')
     return salida
-
