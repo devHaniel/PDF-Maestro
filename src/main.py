@@ -1,4 +1,4 @@
-from ui.interfaz import App
+from frontend.interfaz import App
 
 if __name__ == "__main__":
     app = App()
